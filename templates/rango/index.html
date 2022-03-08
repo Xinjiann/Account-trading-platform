@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Account the lease</title>
+    </head>
+    <body>
+        <h1>Choose a game first!</h1>
+        <div>
+            These are all we got here! <br />
+        <strong>{{ boldmessage }}</strong><br />
+        </div>
+
+        {% if categories %}
+        <ul>
+            {% for category in categories %}
+                <li><a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>>
+        {% endif %}
+        </div>
+
+
+ 
+    </body>
+</html>

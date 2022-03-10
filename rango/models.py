@@ -1,3 +1,5 @@
+from operator import mod
+from re import T
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
@@ -40,3 +42,12 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class GameAccount(models.Model):
+    accountName = models.CharField(max_length=128,unique=True)
+    passwork = models.CharField(max_length=128,unique=False)
+    discription = models.CharField(max_length=128,unique=True)
+
+    def __str__(self):
+        return self.accountName
+

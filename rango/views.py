@@ -1,9 +1,10 @@
+from calendar import c
 import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
-from rango.models import Category, Page
+from rango.models import Category, GameAccount, Page
 from rango.forms import UserForm, UserProfileForm
 
 
@@ -124,7 +125,12 @@ def user_login(request):
         return render(request, 'rango/login.html')
 
 def account_detail(request):
-    return render(request, 'rango/accountDetail.html')
+    account_list = GameAccount.objects.all()
+    print(account_list)
+    context_dict = {}
+    context_dict['accountList'] = account_list
+    
+    return render(request, 'rango/accountDetail.html', context=context_dict)
 
 
 

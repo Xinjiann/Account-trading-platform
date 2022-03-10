@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
@@ -121,6 +122,9 @@ def user_login(request):
     # No context variables to pass to the template system, hence the
     # blank dictionary object...
         return render(request, 'rango/login.html')
+
+def account_detail(request):
+    return render(request, 'rango/accountDetail.html')
 
 
 

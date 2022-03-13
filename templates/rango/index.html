@@ -1,28 +1,57 @@
 <!DOCTYPE html>
-<html>
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
 
-    <head>
-        <title>Account the lease</title>
-    </head>
-    <body>
-        <h1>Choose a game first!</h1>
-        <div>
-            These are all we got here! <br />
-        <strong>{{ boldmessage }}</strong><br />
-        </div>
-
-        {% if categories %}
-        <ul>
-            {% for category in categories %}
-                <li><a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a></li>
-            {% endfor %}
+{% block nav_block %}    
+<div class="w nav">
+        <ul style="margin-left:320px">
+            <li>
+                <a href="#" style="border: 0; background-color: skyblue;">Home</a>
+            </li>
+            <li>
+                <a href="#">Hot</a>
+            </li>
+            <li>
+                <a href="#">My Orders</a>
+            </li>
+            <li>
+                <a href="#">My Accounts</a>
+            </li>
         </ul>
-        {% else %}
-            <strong>There are no categories present.</strong>>
-        {% endif %}
-        </div>
+</div>
+{% endblock %}
 
+{% block content_block %}
+<div class="container w">
+    <div class="ad1">
+        <img src="{% static "images/lol.jpg" %}" width="200px" height="400px" />
+</div>
 
- 
-    </body>
-</html>
+<div class="content">
+    <div class="clearfix">
+        <body style="float: left;margin: 40px 0px 0 60px;">
+                <h1>Choose a game first!</h1>
+                
+                <div>   
+                    These are all we got here! <br />
+                <strong>{{ boldmessage }}</strong><br />
+                </div>
+                <div>
+                {% if categories %}
+                 <ul>
+                    {% for category in categories %}
+                        <li><a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a></li>
+                    {% endfor %}
+                </ul
+                {% else %}
+                    <strong> There are no categories present.</strong>>
+                {% endif %}
+                </div>
+        </body>
+    </div>
+</div>
+
+<div class="ad2">
+     <img src="{% static "images/Overwatch.jpg" %}" width="200px" height="400px" />
+</div>
+{% endblock %}

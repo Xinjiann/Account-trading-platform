@@ -1,28 +1,77 @@
-{% extends 'rango/base.html' %}
-{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title_block %}
-    Register
-{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-{% block body_block %}
-<h1>Register</h1>
-{% if registered %}
-<strong>thank you for registering!</strong>
-<a href="{% url 'rango:index' %}">Return to the homepage.</a><br />
-{% else %}
-<strong>register here!</strong><br />
-<form id="user_form" method="post" action="{% url 'rango:register' %}"
-      enctype="multipart/form-data">
+        #login-form {
+            width: 600px;
+            background-color: rgb(199, 219, 250);
+            margin: 0 auto;
+            margin-top: 60px;
+            padding-bottom: 30px;
+        }
 
-    {% csrf_token %}
+        .form-item {
+            display: block;
+            margin-left: 30px;
+            margin-top: 20px;
+            width: 500px;
+        }
 
-    <!-- Display each form -->
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
+        label {
+            text-align: right;
+            width: 200px;
+            display: inline-block;
+        }
 
-    <!-- Provide a button to click to submit the form. -->
-    <input type="submit" name="submit" value="Register" />
-</form>
-{% endif %}
-{% endblock %}
+        input {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="login-form">
+        <h2 style="text-align: center;padding-top: 10px;">Register</h2>
+        <form action="#">
+            {% if registered %}
+            <strong>thank you for registering!</strong>
+            <a href="{% url 'rango:index' %}">Return to the homepage.</a><br />
+            {% else %}
+            <form id="user_form" method="post" action="{% url 'rango:register' %}"
+                enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <!-- Display each form -->
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+
+                <!-- Provide a button to click to submit the form. -->
+                <input type="submit" style="width: 60px; margin-left: 170px;margin-top: 30px;margin-right: 30px;zoom: 120%;"
+                value="Sign up"> <a href="#" style="text-decoration: none;">learn more</a>
+            </form>
+            {% endif %}
+
+            <div class="form-item">
+                <input type="checkbox"
+                    style="width: 10px; margin-left: 100px;margin-right: 6px;zoom: 120%;margin-top: 6px;">I agree to
+                the Tems of
+                Use and Privocy
+                Policy
+            </div>
+            
+        </form>
+    </div>
+</body>
+
+</html>

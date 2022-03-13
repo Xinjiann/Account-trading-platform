@@ -30,7 +30,7 @@ def index(request):
 
     context_dict = {}
 
-    context_dict['boldmessage'] = 'LOL, CS:GO, Overwatch! '
+    context_dict['boldmessage'] = 'LOL, CS:GO, Overwatch, Warcraft and Fornite! '
     context_dict['categories'] = category_list
     return render(request, 'rango/index.html', context=context_dict)
 
@@ -133,7 +133,11 @@ def account_detail(request, account_name):
     
     return render(request, 'rango/accountDetail.html', context=context_dict)
 
+def myaccount(request):
+    return render(request, 'rango/myaccount.html')
 
+def myorder(request):
+    return render(request, 'rango/myorder.html')
 
 
 

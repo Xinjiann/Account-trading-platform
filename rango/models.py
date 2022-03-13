@@ -54,3 +54,4 @@ class GameAccount(models.Model):
     def __str__(self):
         return self.accountName
 
+

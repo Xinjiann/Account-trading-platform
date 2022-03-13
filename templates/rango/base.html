@@ -1,27 +1,181 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 
-<html>
-    <head lang="en">
-        <meta charset="UTF-8" />
-        <title>
-            Rango - 
-            {% block title_block %}
-                How to Tango with Django!
-            {% endblock %}
-        </title>
-    </head>
-    <body>
-        <div>
-        {% block body_block %}
-        {% endblock %}
-        </div>
-        <hr />
-        <div>
-            <ul>
-                <li><a href="{% url 'rango:register' %}">Sign Up</a></li>
-                <li><a href="{% url 'rango:login' %}">Login</a></li>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="widt, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .w {
+        width: 1200px;
+        margin: auto;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .header {
+        margin-top: 20px;
+        height: 200px;
+        box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .mail_img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .mail {
+        float: left;
+    }
+
+    .user {
+        float: right;
+    }
+
+
+    .login {
+        margin-top: 20px;
+    }
+
+    .login button {
+        display: block;
+        width: 100px;
+        height: 60px;
+        border: 0;
+        margin-top: 20px;
+        margin-left: 310px;
+        background-color: #00a4ff;
+        border-radius: 5px;
+    }
+
+    .nav {
+        height: 60px;
+        background-color: #fff;
+        margin-top: 10px;
+        box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.1);
+        line-height: 60px;
+    }
+
+    .nav ul {
+        float: left;
+        margin-left: 30px;
+    }
+
+    .nav ul li {
+        float: left;
+    }
+
+    .nav ul li a {
+        padding: 0 30px;
+        font-size: 16px;
+        color: #050505;
+        border-left: 1px solid #ccc;
+    }
+
+    .container {
+        box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+
+    }
+
+    .container .ad1 {
+        float: left;
+    }
+
+    .container .content {
+        width: 700px;
+        margin: 0 50px 0 50px;
+        float: left;
+    }
+
+    .container .ad2 {
+        float: right;
+    }
+    .balance input {
+        width: 300px;
+        height: 30px;
+        border: 1px solid #00a4ff;
+        color: #bfbfbf;
+        font-size: 14px;
+        padding-left: 15px;
+        margin-left: 72px
+    }
+
+    .balance button {
+        width: 100px;
+        height: 30px;
+        border: 0;
+        background-color: #00a4ff;
+        border-radius: 5px;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        content: "";
+        display: table;
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    .clearfix {
+        *zoom: 1;
+    }
+</style>
+
+<body>
+    <div class="w header">
+            <div class="mail">
+                <img src= "{% static "images/mail.jpg" %}" class="mail_img" title="picture" />
+            </div>
+            <div class="user">
+                <div class="login">
+                    <button type="button">login</button>
+                    <button type="button">sigin up</button>
+                </div>
+            </div> 
+    </div>
+
+    {% block nav_block %}    
+    <div class="w nav">
+            <ul style="margin-left:320px">
+                <li>
+                    <a href="#" style="border: 0;">Home</a>
+                </li>
+                <li>
+                    <a href="#">Hot</a>
+                </li>
+                <li>
+                    <a href="#">My Orders</a>
+                </li>
+                <li>
+                    <a href="#">My Accounts</a>
+                </li>
             </ul>
-        </div>
-    </body>
+    </div>
+    {% endblock %}
+    
+    {% block content_block %}
+    This is the content.
+    {% endblock %}
+
+</body>
+
 </html>

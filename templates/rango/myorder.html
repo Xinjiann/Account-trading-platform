@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="widt, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .w {
+        width: 1200px;
+        margin: auto;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .header {
+        margin-top: 20px;
+        height: 200px;
+        box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .mail_img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .mail {
+        float: left;
+    }
+
+    .user {
+        float: right;
+    }
+
+    .search input {
+        float: left;
+        width: 345px;
+        height: 40px;
+        border: 1px solid #00a4ff;
+        border-right: 0;
+        color: #bfbfbf;
+        font-size: 14px;
+        padding-left: 15px;
+    }
+
+    .search button {
+        float: left;
+        width: 50px;
+        height: 42px;
+        border: 0;
+        background: url(img/btn.png);
+
+    }
+
+    .login {
+        margin-top: 20px;
+    }
+
+    .login button {
+        display: block;
+        width: 100px;
+        height: 60px;
+        border: 0;
+        margin-top: 20px;
+        margin-left: 310px;
+        background-color: #00a4ff;
+        border-radius: 5px;
+    }
+
+    .nav {
+        height: 60px;
+        background-color: #fff;
+        margin-top: 10px;
+        box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.1);
+        line-height: 60px;
+    }
+
+    .nav ul {
+        float: left;
+        margin-left: 30px;
+    }
+
+    .nav ul li {
+        float: left;
+    }
+
+    .nav ul li a {
+        padding: 0 30px;
+        font-size: 16px;
+        color: #050505;
+        border-left: 1px solid #ccc;
+    }
+
+    .container {
+        box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+
+    }
+
+    .container .ad1 {
+        float: left;
+    }
+
+    .container .content {
+        margin: 0 50px 0 50px;
+    }
+
+    .content ul {
+        margin-left: 60px;
+    }
+
+    .content ul li {
+        float: left;
+        margin-left: 60px;
+        height: 150px;
+        line-height: 150px;
+    }
+
+    .content ul li input,
+    .content ul li button {
+        width: 200px;
+        height: 30px;
+    }
+
+
+    .balance input {
+        width: 300px;
+        height: 30px;
+        border: 1px solid #00a4ff;
+        color: #bfbfbf;
+        font-size: 14px;
+        padding-left: 15px;
+        margin-left: 72px
+    }
+
+    .balance button {
+        width: 100px;
+        height: 30px;
+        border: 0;
+        background-color: #00a4ff;
+        border-radius: 5px;
+    }
+
+    .logout button {
+        width: 100px;
+        height: 50px;
+        border: 0;
+        background-color: #00a4ff;
+        margin: 200px 300px 0 230px;
+        border-radius: 5px;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        content: "";
+        display: table;
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    .clearfix {
+        *zoom: 1;
+    }
+</style>
+
+<body>
+    <div class="w header">
+        <div class="mail">
+            <img src="{% static "images/mail.jpg" %}" class="mail_img" title="picture" />
+        </div>
+        <div class="user">
+
+            <div class="login">
+                <button type="button">login</button>
+                <button type="button">sigin up</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="w nav">
+            <ul style="margin-left:320px">
+                <li>
+                    <a href="#" style="border: 0;">Home</a>
+                </li>
+                <li>
+                    <a href="#">Hot</a>
+                </li>
+                <li>
+                    <a href="#" style="background-color: skyblue;">My Order</a>
+                </li>
+                <li>
+                    <a href="#"> My Account</a>
+                </li>
+            </ul>
+    </div>
+
+    <div class="container w">
+        <div class="ad1">
+            <img src="{% static "images/lol.jpg" %}" width="200px" height="460px" />
+        </div>
+
+        <div class="content">
+            <ul>
+                <li>
+                    <img src="{% static "images/mail.jpg" %}" class="mail_img" style="width: 100px;" title="邮箱图片" />
+                </li>
+                <li><input type="text" placeholder="Accunt Information"></li>
+                <li><input type="text" placeholder="Status"></li>
+                <li><button type="button">Comment</button></li>
+            </ul>
+            <ul>
+                <li>
+                    <img src="{% static "images/mail.jpg" %}" class="mail_img" style="width: 100px;" title="邮箱图片" />
+                </li>
+                <li><input type="text" placeholder="Accunt Information"></li>
+                <li><input type="text" placeholder="Status"></li>
+                <li><button type="button">Comment</button></li>
+            </ul>
+            <ul>
+                <li>
+                    <img src="{% static "images/mail.jpg" %}" class="mail_img" style="width: 100px;" title="邮箱图片" />
+                </li>
+                <li><input type="text" placeholder="Accunt Information"></li>
+                <li><input type="text" placeholder="Status"></li>
+                <li><button type="button">Comment</button></li>
+            </ul>
+
+        </div>
+
+    </div>
+</body>

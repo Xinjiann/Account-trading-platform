@@ -132,7 +132,11 @@ def account_detail(request):
     
     return render(request, 'rango/accountDetail.html', context=context_dict)
 
+def myaccount(request):
+    return render(request, 'rango/myaccount.html')
 
+def myorder(request):
+    return render(request, 'rango/myorder.html')
 
 
 

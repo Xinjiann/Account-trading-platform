@@ -209,16 +209,19 @@
         <div class="content">
             <div class="clearfix">
                 <img src="./img/mail.jpeg" title="Profile Picture" width="100px" style="float: left;margin-left: 100px;" />
-                <h6 style="float: left;margin: 40px 0px 0 60px;">hello, XXX, Welcome</h6>
+                <h1 style="float: left;margin: 40px 0px 0 60px;">Account Detail</h1>
             </div>
+            <br>
             {% if accountList %}
             <ul>
             {% for account in accountList %}
-                <li>{{ account.accountName }}</a></li>
+              <h2>{{account.description}}</h2>
+              <!-- <div>{{ account.accountName }}</a></li>
+              <div>{{account.password}}</div> -->
             {% endfor %}
             </ul>
             {% else %}
-                <strong>There are no categories present.</strong>>
+                <strong>There are no accounts details</strong>
             {% endif %}
         </div>
         

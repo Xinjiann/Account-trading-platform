@@ -124,9 +124,10 @@ def user_login(request):
     # blank dictionary object...
         return render(request, 'rango/login.html')
 
-def account_detail(request):
-    account_list = GameAccount.objects.all()
-    print(account_list)
+def account_detail(request, account_name):
+    # GameAccount.objects.all()    
+    account_list = GameAccount.objects.filter(accountName=account_name)
+    # account_list = GameAccount.objects.get(accountName=account_name)
     context_dict = {}
     context_dict['accountList'] = account_list
     

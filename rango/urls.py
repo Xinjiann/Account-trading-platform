@@ -8,5 +8,5 @@ urlpatterns = [
         views.show_category, name='show_category'),
     path('register/', views.register, name='register'),
     path('login/', views.user_login, name='login'),
-    path('account/', views.account_detail, name='account_detail')
+    path('account/<slug:account_name>/', views.account_detail, name='account_detail')
 ]

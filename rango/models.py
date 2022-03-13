@@ -1,5 +1,6 @@
 from operator import mod
 from re import T
+from unicodedata import category
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
@@ -45,8 +46,10 @@ class UserProfile(models.Model):
 
 class GameAccount(models.Model):
     accountName = models.CharField(max_length=128,unique=True)
-    passwork = models.CharField(max_length=128,unique=False)
-    discription = models.CharField(max_length=128,unique=True)
+    password = models.CharField(max_length=128,unique=False)
+    description = models.CharField(max_length=128,unique=False)
+    category = models.CharField(max_length=128,unique=False,default='')
+    price = models.IntegerField(default=0)
 
     def __str__(self):
         return self.accountName

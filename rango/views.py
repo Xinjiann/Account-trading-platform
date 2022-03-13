@@ -30,7 +30,7 @@ def index(request):
 
     context_dict = {}
 
-    context_dict['boldmessage'] = 'LOL, CS:GO, Overwatch! '
+    context_dict['boldmessage'] = 'LOL, CS:GO, Overwatch, Warcraft and Fornite! '
     context_dict['categories'] = category_list
     return render(request, 'rango/index.html', context=context_dict)
 

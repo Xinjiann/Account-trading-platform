@@ -45,6 +45,8 @@
                   <span style="color:red; font-size:20px; margin-left:4px; line-height:30px; height:30px;">£{{account.price}}</span><br>
                   <span>description:</span>
                   <span style="font-size:15px; margin-left:4px; line-height:30px; height:30px;">{{account.description}}</span><br>
+                  <span>status:</span>
+                  <span style="font-size:15px; margin-left:4px; line-height:30px; height:30px;">{{account.status}}</span><br>
 
                   <button style="margin-top: 100px; margin-left: 250px; width: 120px; height: 40px" onclick="MsgBox()">buy now
                 {% endfor %}
@@ -65,7 +67,9 @@
     {
       var r = confirm("Do you confirm to buy this account?");
       if (r == true) {
-        console.log(1)
+        var slug=window.location.pathname.split("/")[3]
+        window.location.href="http://localhost:8000/rango/buy/"+slug;
+        
       }
     }
   </script>

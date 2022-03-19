@@ -139,6 +139,14 @@ def myaccount(request):
 def myorder(request):
     return render(request, 'rango/myorder.html')
 
+def buy(request, name):
+    account = GameAccount.objects.get(accountName=name)
+    account.status = 'sold'
+    account.save()
+    return account_detail(request, name)
+
+
+
 
 
 

@@ -50,6 +50,8 @@ class GameAccount(models.Model):
     description = models.CharField(max_length=128,unique=False)
     category = models.CharField(max_length=128,unique=False,default='')
     price = models.IntegerField(default=0)
+    seller = models.CharField(max_length=128,unique=False,default='')
+    status = models.CharField(max_length=128,unique=False,default='onSale')
 
     def __str__(self):
         return self.accountName

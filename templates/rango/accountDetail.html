@@ -15,39 +15,60 @@
                 <a href="#">My Order</a>
             </li>
             <li>
-                <a href="#" style="background-color: skyblue;">My Account</a>
+                <a href="#">My Account</a>
             </li>
         </ul>
 </div>
 {% endblock %}
 
-    {% block content_block %}
-    <div class="container w">
-        <div class="ad1">
-            <img src="{% static "images/lol.jpg" %}" width="200px" height="400px" />
-        </div>
+{% block content_block %}
+  <div class="container w">
+      <div class="ad1">
+          <img src="{% static "images/lol.jpg" %}" width="200px" height="400px" />
+      </div>
 
-        <div class="content">
-            <div class="clearfix">
+      <div class="content">
+          <div class="clearfix">
+          <br>
+              <img src="{% static "images/mail.jpg" %}" title="picture" width="100px" style="float: left;margin-left: 100px;" />
+              <h6 style="float: left;margin: 40px 0px 0 60px;">hello, XXX, Welcome</h6>
+          </div>
+          <div style="margin-left: 20px">
             <br>
-                <img src="{% static "images/mail.jpg" %}" title="picture" width="100px" style="float: left;margin-left: 100px;" />
-                <h6 style="float: left;margin: 40px 0px 0 60px;">hello, XXX, Welcome</h6>
-            </div>
             {% if accountList %}
-            <ul>
-            {% for account in accountList %}
-              <h2>{{account.description}}</h2>
-              <!-- <div>{{ account.accountName }}</a></li>
-              <div>{{account.password}}</div> -->
-            {% endfor %}
-            </ul>
-            {% else %}
-                <strong>There are no accounts details</strong>
-            {% endif %}
-        </div>
+              <ul>
+                {% for account in accountList %}
+                  <h1>{{account.accountName}}</h1>
+                  <span style="line-height:30px; height:30px;">account name:</span>
+                  <span style="font-size:15px; margin-left:4px; line-height:30px; height:30px;">{{account.accountName}}</span><br>
+                  <span style="line-height:30px; height:30px;">account price:</span>
+                  <span style="color:red; font-size:20px; margin-left:4px; line-height:30px; height:30px;">£{{account.price}}</span><br>
+                  <span>description:</span>
+                  <span style="font-size:15px; margin-left:4px; line-height:30px; height:30px;">{{account.description}}</span><br>
 
-        <div class="ad2">
-            <img src="{% static "images/Overwatch.jpg" %}" width="200px" height="400px" />
-        </div>
-    </div>
-    {% endblock %}
+                  <button style="margin-top: 100px; margin-left: 250px; width: 120px; height: 40px" onclick="MsgBox()">buy now
+                {% endfor %}
+              </ul>
+            {% else %}
+              <strong>There are no accounts details</strong>
+            {% endif %}
+          </div>
+      </div>
+
+      <div class="ad2">
+          <img src="{% static "images/Overwatch.jpg" %}" width="200px" height="400px" />
+      </div>
+  </div>
+
+  <script language="javascript">
+    function MsgBox() 
+    {
+      var r = confirm("Do you confirm to buy this account?");
+      if (r == true) {
+        console.log(1)
+      }
+    }
+  </script>
+
+{% endblock %}
+

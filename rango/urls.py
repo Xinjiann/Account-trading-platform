@@ -10,5 +10,6 @@ urlpatterns = [
     path('account/', views.account_detail, name='account_detail'),
     path('myaccount/', views.myaccount, name='myaccount'),
     path('myorder/', views.myorder, name='myorder'),
-    path('account/<slug:account_name>/', views.account_detail, name='account_detail')
+    path('account/<slug:account_name>/', views.account_detail, name='account_detail'),
+    path('buy/<slug:name>/', views.buy, name='buy'),
 ]

@@ -2,11 +2,12 @@ from calendar import c
 import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+
 from django.urls import reverse
 from rango.models import Category, GameAccount, Page
 from rango.forms import UserForm, UserProfileForm
-
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -121,6 +122,20 @@ def user_login(request):
     # No context variables to pass to the template system, hence the
     # blank dictionary object...
         return render(request, 'rango/login.html')
+
+
+@login_required
+def restricted(request):
+    return HttpResponse("Since you're logged in, you can see this text!")
+
+
+@login_required
+def user_logout(request):
+    logout(request)
+    # Take the user back to the homepage.
+    return redirect(reverse('rango:index'))
+
+
 
 def account_detail(request, account_name):
     # GameAccount.objects.all()    

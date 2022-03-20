@@ -38,8 +38,6 @@
 <body>
     <div id="login-form">
         <h2 style="text-align: center;padding-top: 10px;">Login in to Rango</h2>
-        <form action="#">
-            
             <form id="login_form" method="post" action="{% url 'rango:login' %}">
                 {% csrf_token %}
                 
@@ -52,10 +50,8 @@
                     <label>Password</label>
                     <input type="password" name="password" value="" size="50" />
                 </div>
-            </form>
-
-            <input type="submit" style="width: 60px; margin-left: 170px;margin-top: 30px;margin-right: 30px;zoom: 120%;"
+                <input type="submit" style="width: 60px; margin-left: 170px;margin-top: 30px;zoom: 120%;"
                 value="Login in"> <a href="#" style="text-decoration: none;">Forgot password?</a>
-        </form>
+            </form>
     </div>
 </body>

@@ -57,3 +57,7 @@ class GameAccount(models.Model):
         return self.accountName
 
 
+class Order(models.Model):
+    accountName = models.CharField(max_length=128,unique=True)
+    buyer = models.CharField(max_length=128,unique=False,default='')
+    date = models.DateTimeField(auto_now=False, auto_now_add=True)

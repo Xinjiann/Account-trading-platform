@@ -13,13 +13,14 @@ from rango.forms import UserForm, UserProfileForm
 def show_category(request,category_name_slug):
     context_dict = {}
     try:
-        category = Category.objects.get(slug=category_name_slug)
-        pages = Page.objects.filter(category=category)
-        context_dict['pages']=pages
+        category = 'fortnite'
+        accounts = GameAccount.objects.filter(category=category)
+        context_dict['accounts']=accounts
         context_dict['category']=category
+        print (accounts)
     except Category.DoesNotExist:
         context_dict['category'] = None
-        context_dict['pages'] = None
+        context_dict['accounts'] = None
     
     return render(request,'rango/category.html',context_dict)
 
@@ -142,6 +143,9 @@ def buy(request, name):
     account.status = 'sold'
     account.save()
     return account_detail(request, name)
+
+def accountList(request):
+    return render(request, 'rango/accountList.html')
 
 
 

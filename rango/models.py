@@ -48,7 +48,7 @@ class GameAccount(models.Model):
     accountName = models.CharField(max_length=128,unique=True)
     password = models.CharField(max_length=128,unique=False)
     description = models.CharField(max_length=128,unique=False)
-    category = models.CharField(max_length=128,unique=False,default='')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     price = models.IntegerField(default=0)
     seller = models.CharField(max_length=128,unique=False,default='')
     status = models.CharField(max_length=128,unique=False,default='onSale')

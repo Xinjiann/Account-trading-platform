@@ -164,24 +164,12 @@ def buy(request, name):
     order.save()
     return account_detail(request, name)
 
-<<<<<<< HEAD
 def popup(request):
     if request.method == 'POST':
         charge = request.POST.get('charge')
         print(charge)
     return myaccount(request)
-=======
+    
 def accountList(request):
     return render(request, 'rango/accountList.html')
 
-
-
-
-
-
-
-
-
-
-
->>>>>>> cf2813ef433ec6cb43d72d36a5e953958104d2a3

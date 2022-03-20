@@ -4,8 +4,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
-from rango.models import Category, GameAccount, Page
+from rango.models import Category, GameAccount, Page, Order
 from rango.forms import UserForm, UserProfileForm
+import time
 
 
 
@@ -141,6 +142,9 @@ def buy(request, name):
     account = GameAccount.objects.get(accountName=name)
     account.status = 'sold'
     account.save()
+
+    order = Order(accountName=name, date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) )
+    order.save()
     return account_detail(request, name)
 
 

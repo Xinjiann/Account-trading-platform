@@ -16,11 +16,6 @@
         padding: 0;
     }
 
-    .w {
-        width: 1200px;
-        margin: auto;
-    }
-
     li {
         list-style: none;
     }
@@ -141,17 +136,6 @@
 </style>
 
 <body>
-    <div class="w header">
-            <div class="mail">
-                <img src= "{% static "images/mail.jpg" %}" class="mail_img" title="picture" />
-            </div>
-            <div class="user">
-                <div class="login">
-                    <button type="button">login</button>
-                    <button type="button">sign up</button>
-                </div>
-            </div> 
-    </div>
 
     {% block nav_block %}    
     <div class="w nav">
@@ -167,6 +151,12 @@
                 </li>
                 <li>
                     <a href="#">My Accounts</a>
+                </li>
+                <li>
+                    <a href="#">Register</a>
+                </li>
+                <li>
+                    <a href="#">Login</a>
                 </li>
             </ul>
     </div>

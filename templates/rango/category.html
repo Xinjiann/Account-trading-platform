@@ -7,10 +7,10 @@
     <div>
     {% if category %}
         <h1>{{ category.name }}</h1>>
-        {% if pages %}
+        {% if accountList %}
             <ul>
-            {% for page in pages %}
-                <li><a href="{{ page.url }}">{{ page.title }}</a>></li>>
+            {% for account in accountList %}
+                <li><a href="/rango/accountList">{{ GameAccount.accountName }}</a>></li>>
             {% endfor %}
             </ul>>
         {% else %}

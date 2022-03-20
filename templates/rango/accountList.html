@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block nav_block %}    
+<div class="w nav">
+        <ul style="margin-left:320px">
+            <li>
+                <a href="#" style="border: 0;">Home</a>
+            </li>
+            <li>
+                <a href="#">Hot</a>
+            </li>
+            <li>
+                <a href="#">My Order</a>
+            </li>
+            <li>
+                <a href="#">My Account</a>
+            </li>
+        </ul>
+</div>
+{% endblock %}
+
+{% block content_block %}
+  <div class="container w">
+      <div class="ad1">
+          <img src="{% static "images/lol.jpg" %}" width="200px" height="400px" />
+      </div>
+
+      <div class="content">
+          <div class="clearfix">
+          <br>
+              <img src="{% static "images/mail.jpg" %}" title="picture" width="100px" style="float: left;margin-left: 100px;" />
+              <h6 style="float: left;margin: 40px 0px 0 60px;">hello, XXX, Welcome</h6>
+          </div>
+          <div style="margin-left: 20px">
+            <br>
+            {% if accountList %}
+              <ul>
+                {% for account in accountList %}
+                  <h1>{{ GameAccount.accountName }}</h1>
+                  <span style="line-height:30px; height:30px;">account name:</span>
+                  <span style="font-size:15px; margin-left:4px; line-height:30px; height:30px;">{{ GameAccount.accountName }}</span><br>
+                  <span style="line-height:30px; height:30px;">account price:</span>
+                  <span style="color:red; font-size:20px; margin-left:4px; line-height:30px; height:30px;">£{{ GameAccount.price }}</span><br>
+                  <span>description:</span>
+                  <span style="font-size:15px; margin-left:4px; line-height:30px; height:30px;">{{ GameAccount.description }}</span><br>
+                  <span>status:</span>
+                  <span style="font-size:15px; margin-left:4px; line-height:30px; height:30px;">{{ GameAccount.status }}</span><br>
+
+                  <button style="margin-top: 100px; margin-left: 250px; width: 120px; height: 40px" onclick="MsgBox()">buy now
+                {% endfor %}
+              </ul>
+            {% else %}
+              <strong>There are no accounts details</strong>
+            {% endif %}
+          </div>
+      </div>
+
+      <div class="ad2">
+          <img src="{% static "images/Overwatch.jpg" %}" width="200px" height="400px" />
+      </div>
+  </div>
+
+  <script language="javascript">
+    function MsgBox() 
+    {
+      var r = confirm("Do you confirm to buy this account?");
+      if (r == true) {
+        var slug=window.location.pathname.split("/")[3]
+        window.location.href="http://localhost:8000/rango/buy/"+slug;
+        
+      }
+    }
+  </script>
+
+{% endblock %}
+

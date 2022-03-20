@@ -39,8 +39,11 @@
             <h6 style="float: left;margin: 40px 0px 0 60px;">hello, XXX, Welcome</h6>
         </div>
         <div class="balance" style="margin-left: 30px;">
-            <input type="text" placeholder="Balance:" />
-            <button type="button">Charge</button>
+            <form id="popup_form" method="post" action="{% url 'rango:popup' %}">
+                {% csrf_token %}
+                <input type="text" name="charge" placeholder="Balance:" />
+                <button type="submit">Charge</button>
+            </form>
         </div>
     </div>
 

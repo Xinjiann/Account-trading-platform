@@ -163,13 +163,8 @@ def buy(request, name):
     order.save()
     return account_detail(request, name)
 
-
-
-
-
-
-
-
-
-
-
+def popup(request):
+    if request.method == 'POST':
+        charge = request.POST.get('charge')
+        print(charge)
+    return myaccount(request)

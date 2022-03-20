@@ -14,4 +14,5 @@ urlpatterns = [
     path('myorder/', views.myorder, name='myorder'),
     path('account/<slug:account_name>/', views.account_detail, name='account_detail'),
     path('buy/<slug:name>/', views.buy, name='buy'),
+    path('popup/', views.popup, name='popup'),
 ]

@@ -45,10 +45,13 @@
                 <button type="submit">Charge</button>
             </form>
         </div>
+        <br>
+        <br>
+        <br><br>
         {% if user %}
             {% for u in user %}
-            <span>balance: </span>
-            <span>{{u.balance}}</span>
+            <span style="font-size: 20px;">Your balance is: </span>
+            <span style="font-size: 20px; color: rgb(219, 15, 15);">£{{u.balance}}</span>
             {% endfor %}
 
         {% else %}

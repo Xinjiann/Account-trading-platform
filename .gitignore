@@ -5,4 +5,5 @@ __pycache__
 media
 .idea
 db.sqlite3
-
+migrations
+.DS_Store

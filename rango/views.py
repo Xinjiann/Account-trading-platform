@@ -158,7 +158,7 @@ def myaccount(request):
     user = User.objects.get(username=name)
     user2 = UserProfile.objects.filter(user=user)
     context_dict = {}
-    context_dict['user'] = user2
+    context_dict['userprofile'] = user2
     return render(request, 'rango/myaccount.html', context=context_dict)
 
 def myorder(request):

@@ -192,10 +192,10 @@
 <div class="w nav">
     <ul style="margin-left:320px">
         <li>
-            <a href="{% url 'rango:index' %}" class="select_nav">Home</a>
+            <a href="{% url 'rango:index' %}">Home</a>
         </li>
         <li>
-            <a href="{% url 'rango:myorder' %}">My Orders</a>
+            <a href="{% url 'rango:myorder' %}" class="select_nav">My Orders</a>
         </li>
         <li>
             <a href="{% url 'rango:myaccount' %}">My Accounts</a>
@@ -222,7 +222,7 @@
             <br>
             <img src="{% static "images/mail.jpg" %}" title="picture" width="100px" style="float: left;margin-left: 100px;" />
             {% if user.is_authenticated %}
-            <h6 style="float: left;margin: 40px 0px 0 50px;">hello, {{user.username}}, Welcome</h6>
+            <h6 style="float: left;margin: 40px 0px 0 50px;">Hello, {{user.username}}, Welcome</h6>
             {% else %}
             <h6 style="float: left;margin: 40px 0px 0 50px;">You have not logged in</h6>
             {% endif %}

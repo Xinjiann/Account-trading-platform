@@ -33,7 +33,7 @@ def show_category(request,category_name_slug):
 def index(request):
 
     category_list = Category.objects.order_by('-likes')[:5]
-
+    
     context_dict = {}
 
     context_dict['boldmessage'] = 'LOL, CS:GO, Overwatch, Warcraft and Fornite! '

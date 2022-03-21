@@ -1,5 +1,6 @@
 from ast import Or
 from calendar import c
+from curses.ascii import US
 import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -170,9 +171,20 @@ def myorder(request):
     return render(request, 'rango/myorder.html', context=context_dict)
 
 def buy(request, name):
+
+    username = request.COOKIES.get('name')
     account = GameAccount.objects.get(accountName=name)
+
+    user = User.objects.get(username=username)
+    user1 = UserProfile.objects.get(user=user)
+    if (user1.balance < account.price) :
+        return HttpResponse("Balance not enough!")
+    
     account.status = 'sold'
+    user1.balance -= account.price
     account.save()
+    user1.save()
+    
 
     order = Order(accountName=name, date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), buyer=request.COOKIES.get('name'), password=account.password)
     order.save()

@@ -16,7 +16,7 @@
           </li>
           {% if user.is_authenticated %}
               <!-- Show these links when the user is logged in -->
-              <li><strong>welcome back  {{ user.username }}!</strong></li>
+              <li><a>{{ user.username }}</a></li>
               <li><a href="{% url 'rango:logout' %}">Logout</a></li>
           {% else %}
               <!-- Show these links when the user is NOT logged in -->
@@ -43,8 +43,7 @@
               <h6 style="float: left;margin: 40px 0px 0 50px;">You have not logged in</h6>
               {% endif %}
           </div>
-          <div style="margin-left: 20px">
-            <br>
+          <div style="margin-left: -10px">
             {% if accounts %}
 
             {% for account in accounts %}

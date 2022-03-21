@@ -162,8 +162,9 @@ def myaccount(request):
     return render(request, 'rango/myaccount.html', context=context_dict)
 
 def myorder(request):
-    user = buyer=request.COOKIES.get('name')
+    user = request.COOKIES.get('name')
     orders = Order.objects.filter(buyer=user)
+
     context_dict = {}
     context_dict['orders'] = orders
     return render(request, 'rango/myorder.html', context=context_dict)
@@ -173,7 +174,7 @@ def buy(request, name):
     account.status = 'sold'
     account.save()
 
-    order = Order(accountName=name, date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), buyer=request.COOKIES.get('name'))
+    order = Order(accountName=name, date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), buyer=request.COOKIES.get('name'), password=account.password)
     order.save()
     return account_detail(request, name)
 
@@ -189,7 +190,7 @@ def popup(request):
 
 def accountList(request,name):
     list = GameAccount.objects.filter(category=name)
-    
+
     context_dict = {}
     context_dict['accounts'] = list
     return render(request, 'rango/accountList.html', context=context_dict)

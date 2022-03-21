@@ -60,6 +60,7 @@ class GameAccount(models.Model):
 
 class Order(models.Model):
     accountName = models.CharField(max_length=128,unique=True)
+    password = models.CharField(max_length=128,unique=False,default='')
     buyer = models.CharField(max_length=128,unique=False,default='')
     date = models.CharField(max_length=128,unique=False)
 

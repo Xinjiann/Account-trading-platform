@@ -214,33 +214,56 @@
 
 <div class="container w">
     <div class="ad1">
-        <img src="{% static "images/lol.jpg" %}" width="200px" height="400px"/>
+        <img src="{% static "images/lol.jpg" %}" width="200px" height="400px" />
     </div>
 
-    <div class="w">
-        <div class="content">
-            <h1>Choose a game first!</h1>
+    <div class="content">
+        <div class="clearfix" style="margin-left: 50px">
+            <br>
+            <img src="{% static "images/mail.jpg" %}" title="picture" width="100px" style="float: left;margin-left: 100px;" />
+            {% if user.is_authenticated %}
+            <h6 style="float: left;margin: 40px 0px 0 50px;">hello, {{user.username}}, Welcome</h6>
+            {% else %}
+            <h6 style="float: left;margin: 40px 0px 0 50px;">You have not logged in</h6>
+            {% endif %}
 
-            <div>
-                These are all we got here! <br/>
-                <strong>{{ boldmessage }}</strong><br/>
-            </div>
-            <div>
-                {% if categories %}
-                    <ul>
-                        {% for category in categories %}
-                            <li><a href="{% url 'rango:accountList' category.name %}">{{ category.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <strong> There are no categories present.</strong>>
-                {% endif %}
-            </div>
+        </div>
+        <div style="margin-left: 20px">
+          {% if orders %}
+            {% for order in orders %}
+                <div class="card one">
+                    <span>account: {{order.accountName}}</span>
+                    <div>password: {{order.password}}</div>
+                    <p >date: {{ order.date }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <strong>You  no orders</strong>
+        {% endif %}
         </div>
     </div>
 
     <div class="ad2">
-        <img src="{% static "images/Overwatch.jpg" %}" width="200px" height="400px"/>
+        <img src="{% static "images/Overwatch.jpg" %}" width="200px" height="400px" />
     </div>
 </div>
 </body>
+
+<style>
+    .card{
+        width: 620px;
+        height: 6vh;
+        border-radius: 2vh;
+        margin: 2vh;
+        border-radius: 12px;
+        color: #020202;
+        cursor: pointer;
+        transition: all 1s ease;
+        display: block;
+    }
+    .one{
+        background-color: #e7e4ee;
+        z-index: 5;
+        opacity: 0.9;
+    }
+</style>

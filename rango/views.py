@@ -189,6 +189,7 @@ def popup(request):
 
 def accountList(request,name):
     list = GameAccount.objects.filter(category=name)
+    
     context_dict = {}
     context_dict['accounts'] = list
     return render(request, 'rango/accountList.html', context=context_dict)

@@ -46,11 +46,21 @@
           <div style="margin-left: 20px">
             <br>
             {% if accounts %}
-              {% for account in accounts %}
-                <span>{{account.accountName}}</span>
-                <span>{{account.seller}}</span>
-                <br>
-              {% endfor %}
+
+            {% for account in accounts %}
+            
+            <div class="card one">
+                <li><a href="{% url 'rango:account_detail' account.accountName %}">{{account.accountName}}</a></li>
+                <span>Description: {{account.description}}</span>
+            </br>
+                  <span>Price:{{account.price}}</span>
+            </br>
+                  <span>seller:{{account.seller}}</span>
+                 
+            </div>
+            
+            {% endfor %}
+
             {% else %}
               <strong>There are no accounts in this category</strong>
             {% endif %}
@@ -73,6 +83,34 @@
       }
     }
   </script>
+
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+  
+    .card{
+        width: 42vw;
+        height: 12vh;
+        
+        border-radius: 2vh;
+        margin: 2vh;
+        border-radius: 12px;
+
+        color: #070707;
+        cursor: pointer;
+        transition: all 1s ease;
+        display: block;
+        
+    }
+    .one{
+        background-color: #ededf3;
+        
+        z-index: 1;
+        opacity: 0.9;
+      }
+  </style>
 
 {% endblock %}
 

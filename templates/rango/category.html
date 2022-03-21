@@ -10,7 +10,7 @@
         {% if accountList %}
             <ul>
             {% for account in accountList %}
-                <li><a href="/rango/accountList">{{ GameAccount.accountName }}</a>></li>>
+                <li><a href="{% url 'rango:detailurl' GameAccount.accountName %}">{{ GameAccount.accountName }}</a>></li>>
             {% endfor %}
             </ul>>
         {% else %}

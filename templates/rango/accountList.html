@@ -35,24 +35,12 @@
           </div>
           <div style="margin-left: 20px">
             <br>
-            {% if accountList %}
-              <ul>
-                {% for account in accountList %}
-                  <h1>{{ GameAccount.accountName }}</h1>
-                  <span style="line-height:30px; height:30px;">account name:</span>
-                  <span style="font-size:15px; margin-left:4px; line-height:30px; height:30px;">{{ GameAccount.accountName }}</span><br>
-                  <span style="line-height:30px; height:30px;">account price:</span>
-                  <span style="color:red; font-size:20px; margin-left:4px; line-height:30px; height:30px;">£{{ GameAccount.price }}</span><br>
-                  <span>description:</span>
-                  <span style="font-size:15px; margin-left:4px; line-height:30px; height:30px;">{{ GameAccount.description }}</span><br>
-                  <span>status:</span>
-                  <span style="font-size:15px; margin-left:4px; line-height:30px; height:30px;">{{ GameAccount.status }}</span><br>
-
-                  <button style="margin-top: 100px; margin-left: 250px; width: 120px; height: 40px" onclick="MsgBox()">buy now
-                {% endfor %}
-              </ul>
+            {% if accounts %}
+            {% for account in accounts %}
+              <div>{{account.accountName}}</div>
+            {% endfor %}
             {% else %}
-              <strong>There are no accounts details</strong>
+              <strong>There are no accounts in this category</strong>
             {% endif %}
           </div>
       </div>

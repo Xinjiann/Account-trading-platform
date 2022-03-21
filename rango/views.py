@@ -1,3 +1,4 @@
+from ast import Or
 from calendar import c
 import re
 from django.shortcuts import render, redirect
@@ -5,7 +6,8 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 
 from django.urls import reverse
-from rango.models import Category, GameAccount, Page, Order
+from rango.models import Category, GameAccount, Page, Order, UserProfile
+from django.contrib.auth.models import User
 from rango.forms import UserForm, UserProfileForm
 import time
 from django.contrib.auth.decorators import login_required
@@ -111,7 +113,9 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return redirect(reverse('rango:index'))
+                rep = redirect(reverse('rango:index'))
+                rep.set_cookie('name', username)
+                return rep
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your Rango account is disabled.")
@@ -150,26 +154,42 @@ def account_detail(request, account_name):
     return render(request, 'rango/accountDetail.html', context=context_dict)
 
 def myaccount(request):
-    return render(request, 'rango/myaccount.html')
+    name = request.COOKIES.get('name')
+    user = User.objects.get(username=name)
+    user2 = UserProfile.objects.filter(user=user)
+    context_dict = {}
+    context_dict['user'] = user2
+    return render(request, 'rango/myaccount.html', context=context_dict)
 
 def myorder(request):
-    return render(request, 'rango/myorder.html')
+    user = buyer=request.COOKIES.get('name')
+    orders = Order.objects.filter(buyer=user)
+    context_dict = {}
+    context_dict['orders'] = orders
+    return render(request, 'rango/myorder.html', context=context_dict)
 
 def buy(request, name):
     account = GameAccount.objects.get(accountName=name)
     account.status = 'sold'
     account.save()
 
-    order = Order(accountName=name, date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) )
+    order = Order(accountName=name, date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), buyer=request.COOKIES.get('name'))
     order.save()
     return account_detail(request, name)
 
 def popup(request):
     if request.method == 'POST':
         charge = request.POST.get('charge')
-        print(charge)
+        name = request.COOKIES.get('name')
+        user = User.objects.get(username=name)
+        user2 = UserProfile.objects.get(user=user)
+        user2.balance += int(charge)
+        user2.save()
     return myaccount(request)
-    
-def accountList(request):
-    return render(request, 'rango/accountList.html')
+
+def accountList(request,name):
+    list = GameAccount.objects.filter(category=name)
+    context_dict = {}
+    context_dict['accounts'] = list
+    return render(request, 'rango/accountList.html', context=context_dict)
 

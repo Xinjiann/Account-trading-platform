@@ -40,6 +40,7 @@ class UserProfile(models.Model):
     # The additional attributes we wish to include.
     
     picture = models.ImageField(upload_to='profile_images', blank=True)
+    balance = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
@@ -48,7 +49,7 @@ class GameAccount(models.Model):
     accountName = models.CharField(max_length=128,unique=True)
     password = models.CharField(max_length=128,unique=False)
     description = models.CharField(max_length=128,unique=False)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.CharField(max_length=128,unique=False)
     price = models.IntegerField(default=0)
     seller = models.CharField(max_length=128,unique=False,default='')
     status = models.CharField(max_length=128,unique=False,default='onSale')

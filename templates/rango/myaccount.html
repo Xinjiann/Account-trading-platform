@@ -6,16 +6,16 @@
 <div class="w nav">
         <ul style="margin-left:320px">
             <li>
-                <a href="#" style="border: 0;">Home</a>
+                <a href="{% url 'rango:index' %}" style="border: 0; background-color: skyblue;">Home</a>
             </li>
             <li>
                 <a href="#">Hot</a>
             </li>
             <li>
-                <a href="#">My Order</a>
+                <a href="{% url 'rango:myorder' %}">My Orders</a>
             </li>
             <li>
-                <a href="#" style="background-color: skyblue;">My Account</a>
+                <a href="{% url 'rango:myaccount' %}">My Accounts</a>
             </li>
             <li>
                 <a href="#">Register</a>
@@ -45,6 +45,15 @@
                 <button type="submit">Charge</button>
             </form>
         </div>
+        {% if user %}
+            {% for u in user %}
+            <span>balance: </span>
+            <span>{{u.balance}}</span>
+            {% endfor %}
+            
+        {% else %}
+            <div>You have not logged in</div>
+        {% endif %}
     </div>
 
     <div class="ad2">

@@ -35,25 +35,27 @@
      <div class="content">
         <div class="clearfix" style="margin-left: 100px">
             <br>
-            <img src="{% static "images/mail.jpg" %}" title="picture" width="100px" style="float: left;margin-left: 100px;" />
-            <h6 style="float: left;margin: 40px 0px 0 30px;">hello, XXX, Welcome</h6>
+            <img src="{% static "images/mail.jpg" %}" title="picture" width="100px" style="float: left;margin-left: 50px;" />
+            {% if user.is_authenticated %}
+            <h6 style="float: left;margin: 40px 0px 0 50px;">Hello, {{user.username}}, Welcome</h6>
+            {% else %}
+            <h6 style="float: left;margin: 40px 0px 0 50px;">You have not logged in</h6>
+            {% endif %}
         </div>
-        <div class="balance" style="margin-left: 30px;">
+        <br>
+        <div class="balance" style="margin-left: 10px;">
             <form id="popup_form" method="post" action="{% url 'rango:popup' %}">
                 {% csrf_token %}
                 <input type="text" name="charge" placeholder="Balance:" />
                 <button type="submit">Charge</button>
             </form>
         </div>
-        <br>
-        <br>
-        <br><br>
-        {% if user %}
-            {% for u in user %}
+        <br><br><br><br><br><br>
+        {% if userprofile %}
+            {% for u in userprofile %}
             <span style="font-size: 20px;">Your balance is: </span>
-            <span style="font-size: 20px; color: rgb(219, 15, 15);">£{{u.balance}}</span>
+            <span style="font-size: 20px; color: rgb(226, 21, 21);">£{{u.balance}}</span>
             {% endfor %}
-
         {% else %}
             <div>You have not logged in</div>
         {% endif %}

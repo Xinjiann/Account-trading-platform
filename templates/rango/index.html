@@ -45,7 +45,11 @@
                 {% if categories %}
                  <ul>
                     {% for category in categories %}
+                    <div class="card one">
                         <li><a href="{% url 'rango:accountList' category.name %}">{{ category.name }}</a></li>
+                        
+                    </div>
+                        
                     {% endfor %}
                  </ul>
                 {% else %}
@@ -58,4 +62,32 @@
 <div class="ad2">
      <img src="{% static "images/Overwatch.jpg" %}" width="200px" height="400px" />
 </div>
+
+<style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+  
+    .card{
+        width: 42vw;
+        height: 6vh;
+        
+        border-radius: 2vh;
+        margin: 2vh;
+        border-radius: 12px;
+
+        color: #070707;
+        cursor: pointer;
+        transition: all 1s ease;
+        display: block;
+        
+    }
+    .one{
+        background-color: #ededf3;
+        
+        z-index: 1;
+        opacity: 0.9;
+      }
+  </style>
 {% endblock %}

@@ -54,7 +54,9 @@
                   <span>status:</span>
                   <span style="font-size:15px; margin-left:4px; line-height:30px; height:30px;">{{account.status}}</span><br>
 
-                  <button style="margin-top: 100px; margin-left: 0px; width: 120px; height: 40px" onclick="MsgBox()">buy now
+                  <!-- <button style="margin-top: 100px; margin-left: 0px; width: 120px; height: 40px" onclick="MsgBox()">buy now -->
+                    <br><br>
+                  <li><a href="{% url 'rango:buy' account.accountName %}">buy now</a></li>
                 {% endfor %}
               </ul>
             {% else %}
@@ -74,7 +76,7 @@
       var r = confirm("Do you confirm to buy this account?");
       if (r == true) {
         var slug=window.location.pathname.split("/")[3]
-        window.location.href="http://localhost:8000/rango/buy/"+slug;
+        window.location.href="{% url 'rango:account_detail' account.accountName %}"
         
       }
     }

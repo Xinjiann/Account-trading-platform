@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 
 from django.urls import reverse
-from rango.models import Category, GameAccount, Page, Order, UserProfile
+from rango.models import Category, GameAccount, Order, UserProfile
 from django.contrib.auth.models import User
 from rango.forms import UserForm, UserProfileForm
 import time
